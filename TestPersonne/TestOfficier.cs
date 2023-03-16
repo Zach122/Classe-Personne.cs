@@ -8,72 +8,73 @@ using System.Threading.Tasks;
 namespace TestPersonne
 {
     /// <summary>
-    /// Classe de test pour la classe soldat.
+    /// Classe de test pour la classe Officier.
     /// </summary>
     [TestClass()]
-    public class TestSoldat
+    public class TestOfficier
     {
         Personne personneValide = new Personne("doe", "John", DateTime.Now.AddYears(-1));
 
+       
         [TestMethod()]
         public void SoldatConstructeurValide()
         {
-            Soldat p = new Soldat(personneValide, "666666", "1", "1");
+            Officier p = new Officier(personneValide, "666666", "1", "1");
         }
 
         [TestMethod()]
-        public void SoldatPersonneNul()
+        public void OfficierPersonneNul()
         {
             Assert.ThrowsException<ArgumentNullException>(
-            () => new Soldat(null, "666666", "1", "1"));
+            () => new Officier(null, "666666", "1", "1"));
         }
 
         [TestMethod()]
-        public void SoldatNumeroMatriculeNul()
+        public void OfficierNumeroMatriculeNul()
         {
             Assert.ThrowsException<ArgumentNullException>(
-            () => new Soldat(personneValide, null, "1", "1"));
+            () => new Officier(personneValide, null, "1", "1"));
         }
 
         [TestMethod()]
-        public void SoldatNumeroPelotonNul()
+        public void OfficierBataillonNul()
         {
             Assert.ThrowsException<ArgumentNullException>(
-            () => new Soldat(personneValide, "666666", null, "1"));
+            () => new Officier(personneValide, "666666", null, "1"));
         }
 
         [TestMethod()]
-        public void SoldatGradeNul()
+        public void OfficierGradeNul()
         {
             Assert.ThrowsException<ArgumentNullException>(
-            () => new Soldat(personneValide, "666666", "1", null));
+            () => new Officier(personneValide, "666666", "1", null));
         }
 
         [TestMethod()]
-        public void SoldatNumeroMatriculeVide()
+        public void OfficierNumeroMatriculeVide()
         {
             string matriculeVide = "";
 
             Assert.ThrowsException<ArgumentException>(
-            () => new Soldat(personneValide, matriculeVide, "1", "1"));
+            () => new Officier(personneValide, matriculeVide, "1", "1"));
         }
 
         [TestMethod()]
-        public void SoldatNumeroPelotonVide()
+        public void OfficierBtaillonVide()
         {
-            string pelotoneVide = "";
+            string bataillonVide = "";
 
             Assert.ThrowsException<ArgumentException>(
-            () => new Soldat(personneValide, "666666", pelotoneVide, "1"));
+            () => new Officier(personneValide, "666666", bataillonVide, "1"));
         }
 
         [TestMethod()]
-        public void SoldatGradeVide()
+        public void OfficierGradeVide()
         {
             string gradeVide = "";
 
             Assert.ThrowsException<ArgumentException>(
-            () => new Soldat(personneValide, "666666", "1", gradeVide));
+            () => new Officier(personneValide, "666666", "1", gradeVide));
         }
     }
 }
